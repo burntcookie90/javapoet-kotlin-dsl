@@ -1,9 +1,9 @@
-package io.dwak.javapoet.dsl.model
+package com.vishnurajeevan.javapoet.dsl.model
 
 import com.squareup.javapoet.TypeName
-import io.dwak.javapoet.dsl.model.JavaPoetConstructor
-import io.dwak.javapoet.dsl.model.JavaPoetMethod
-import io.dwak.javapoet.dsl.model.JavaPoetValue
+import com.vishnurajeevan.javapoet.dsl.model.JavaPoetConstructor
+import com.vishnurajeevan.javapoet.dsl.model.JavaPoetMethod
+import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
 import javax.lang.model.element.Modifier
 
 class JavaPoetType(val modifiers : Set<Modifier>,

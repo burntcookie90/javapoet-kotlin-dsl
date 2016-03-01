@@ -1,10 +1,10 @@
-package io.dwak.javapoet.dsl.model
+package com.vishnurajeevan.javapoet.dsl.model
 
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeName
-import io.dwak.javapoet.dsl.model.JavaPoetControlFlow
-import io.dwak.javapoet.dsl.model.JavaPoetValue
+import com.vishnurajeevan.javapoet.dsl.model.JavaPoetControlFlow
+import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
 import java.lang.reflect.Type
 import javax.lang.model.element.Modifier
 

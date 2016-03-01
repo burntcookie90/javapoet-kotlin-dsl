@@ -1,4 +1,4 @@
-package io.dwak.javapoet.dsl.model
+package com.vishnurajeevan.javapoet.dsl.model
 
 import com.squareup.javapoet.MethodSpec
 
