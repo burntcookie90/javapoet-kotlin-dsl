@@ -12,8 +12,20 @@ class JavaPoetControlFlow(val methodSpecBuilder : MethodSpec.Builder) {
     methodSpecBuilder.addStatement(format, *args)
   }
 
+  fun begin(format : String, args : Array<Any>, init : JavaPoetControlFlow.() -> Unit){
+    methodSpecBuilder.beginControlFlow(format, *args)
+    val controlFlow = JavaPoetControlFlow(methodSpecBuilder)
+    controlFlow.init()
+  }
+
   fun begin(condition : String, init : JavaPoetControlFlow.() -> Unit) {
     methodSpecBuilder.beginControlFlow(condition)
+    val controlFlow = JavaPoetControlFlow(methodSpecBuilder)
+    controlFlow.init()
+  }
+
+  fun next(format : String, args : Array<Any>, init : JavaPoetControlFlow.() -> Unit){
+    methodSpecBuilder.nextControlFlow(format, *args)
     val controlFlow = JavaPoetControlFlow(methodSpecBuilder)
     controlFlow.init()
   }
