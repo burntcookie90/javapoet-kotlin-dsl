@@ -1,7 +1,10 @@
 package com.vishnurajeevan.javapoet.dsl
 
+import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.JavaFile
+import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeName.*
+import com.squareup.javapoet.TypeVariableName
 import com.vishnurajeevan.javapoet.dsl.classType
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
 import java.util.*
@@ -11,6 +14,10 @@ fun main(args : Array<String>) {
 
   JavaFile.builder("com.example", classType(PUBLIC, "TestDsl") {
     javaDoc = "This is a test class for the kotlin javapoet DSL\n"
+    parameterizedTypes.add(TypeVariableName.get("T"))
+    extends.add(ClassName.get("java.lang", "String"))
+    implements.add(ClassName.get("java.lang", "Cloneable"))
+
 
     field(setOf(PROTECTED, FINAL), BOOLEAN, "isProtected", true) {
       javaDoc = "this is a protected final field\n"

@@ -1,6 +1,7 @@
 package com.vishnurajeevan.javapoet.dsl.model
 
 import com.squareup.javapoet.TypeName
+import com.squareup.javapoet.TypeVariableName
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetConstructor
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetMethod
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
@@ -13,6 +14,9 @@ class JavaPoetType(val modifiers : Set<Modifier>,
   val methods = arrayListOf<JavaPoetMethod>()
   val fields = arrayListOf<JavaPoetValue>()
   var javaDoc : String? = null
+  val parameterizedTypes = arrayListOf<TypeVariableName>()
+  val extends = arrayListOf<TypeName>()
+  val implements = arrayListOf<TypeName>()
 
   fun field(modifier : Modifier = Modifier.DEFAULT,
             typeName : TypeName,

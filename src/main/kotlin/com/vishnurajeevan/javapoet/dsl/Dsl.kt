@@ -17,6 +17,9 @@ inline fun classType(modifiers : Set<Modifier> = setOf(DEFAULT),
   type.init()
 
   val typeSpecBuilder = TypeSpec.classBuilder(type.name).addModifiers(*type.modifiers.toTypedArray())
+  type.parameterizedTypes.forEach { typeSpecBuilder.addTypeVariable(it) }
+  type.extends.forEach { typeSpecBuilder.superclass(it) }
+  type.implements.forEach { typeSpecBuilder.addSuperinterface(it) }
 
   type.javaDoc?.let { typeSpecBuilder.addJavadoc(it) }
   type.fields.forEach {
