@@ -23,7 +23,7 @@ class JavaPoetMethod(val name : String,
   init {
     methodSpecBuilder = MethodSpec.methodBuilder(name).addModifiers(modifiers).returns(returns)
     parameters.forEach {
-      methodSpecBuilder.addParameter(ParameterSpec.builder(it.type, it.name, *it.modifiers.toTypedArray()).build())
+      methodSpecBuilder.addParameter(ParameterSpec.builder(it.typeName, it.name, *it.modifiers.toTypedArray()).build())
     }
   }
 

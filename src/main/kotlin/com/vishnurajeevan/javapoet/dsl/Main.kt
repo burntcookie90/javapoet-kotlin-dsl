@@ -18,6 +18,8 @@ fun main(args : Array<String>) {
 
     field(PRIVATE, BOOLEAN, "isPrivate")
 
+    field(PRIVATE, IntArray::class.java, "integerArray")
+
     constructor(PUBLIC) //no init block gives default empty constructor
 
     constructor(PUBLIC, setOf(JavaPoetValue(FINAL, BOOLEAN, "isPrivate"))) {

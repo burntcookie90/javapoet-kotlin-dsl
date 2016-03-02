@@ -4,6 +4,7 @@ import com.squareup.javapoet.TypeName
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetConstructor
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetMethod
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
+import java.lang.reflect.Type
 import javax.lang.model.element.Modifier
 
 class JavaPoetType(val modifiers : Set<Modifier>,
@@ -14,18 +15,37 @@ class JavaPoetType(val modifiers : Set<Modifier>,
   var javaDoc : String? = null
 
   fun field(modifier : Modifier = Modifier.DEFAULT,
-            type : TypeName,
+            typeName : TypeName,
+            name : String,
+            value : Any? = null,
+            init : JavaPoetValue.() -> Unit = {})
+          = field(setOf(modifier), typeName, name, value, init)
+
+  fun field(modifiers : Set<Modifier> = setOf(Modifier.DEFAULT),
+            typeName : TypeName,
+            name : String,
+            value : Any? = null,
+            init : JavaPoetValue.() -> Unit = {}) : JavaPoetValue {
+
+    val jPValue = JavaPoetValue(modifiers = modifiers, typeName = typeName, name = name, value = value)
+    jPValue.init()
+    fields.add(jPValue)
+    return jPValue
+  }
+
+  fun field(modifier : Modifier = Modifier.DEFAULT,
+            type : Type,
             name : String,
             value : Any? = null,
             init : JavaPoetValue.() -> Unit = {})
           = field(setOf(modifier), type, name, value, init)
   fun field(modifiers : Set<Modifier> = setOf(Modifier.DEFAULT),
-            type : TypeName,
+            type: Type,
             name : String,
             value : Any? = null,
             init : JavaPoetValue.() -> Unit = {}) : JavaPoetValue {
 
-    val jPValue = JavaPoetValue(modifiers, type, name, value)
+    val jPValue = JavaPoetValue(modifiers = modifiers, type= type, name = name, value = value)
     jPValue.init()
     fields.add(jPValue)
     return jPValue
