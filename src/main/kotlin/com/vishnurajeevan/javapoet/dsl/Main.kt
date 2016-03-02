@@ -1,10 +1,7 @@
 package com.vishnurajeevan.javapoet.dsl
 
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.JavaFile
-import com.squareup.javapoet.TypeName
+import com.squareup.javapoet.*
 import com.squareup.javapoet.TypeName.*
-import com.squareup.javapoet.TypeVariableName
 import com.vishnurajeevan.javapoet.dsl.classType
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
 import java.util.*
@@ -17,7 +14,6 @@ fun main(args : Array<String>) {
     parameterizedTypes.add(TypeVariableName.get("T"))
     extends.add(ClassName.get("java.lang", "String"))
     implements.add(ClassName.get("java.lang", "Cloneable"))
-
 
     field(setOf(PROTECTED, FINAL), BOOLEAN, "isProtected", true) {
       javaDoc = "this is a protected final field\n"
@@ -52,6 +48,7 @@ fun main(args : Array<String>) {
 
     method(setOf(PRIVATE, FINAL), INT, "returnsInteger") {
       javaDoc = "this method returns an integer\n"
+      annotations = setOf(AnnotationSpec.builder(Override::class.java).build())
 
       statement("int total = 0")
 

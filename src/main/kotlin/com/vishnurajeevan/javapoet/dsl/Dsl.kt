@@ -20,7 +20,7 @@ inline fun classType(modifiers : Set<Modifier> = setOf(DEFAULT),
   type.parameterizedTypes.forEach { typeSpecBuilder.addTypeVariable(it) }
   type.extends.forEach { typeSpecBuilder.superclass(it) }
   type.implements.forEach { typeSpecBuilder.addSuperinterface(it) }
-
+  type.annotations?.forEach { typeSpecBuilder.addAnnotation(it) }
   type.javaDoc?.let { typeSpecBuilder.addJavadoc(it) }
   type.fields.forEach {
     var builder : FieldSpec.Builder

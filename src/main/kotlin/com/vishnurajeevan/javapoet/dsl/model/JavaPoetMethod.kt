@@ -1,11 +1,13 @@
 package com.vishnurajeevan.javapoet.dsl.model
 
+import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeName
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetControlFlow
 import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
 import java.lang.reflect.Type
+import java.util.*
 import javax.lang.model.element.Modifier
 
 class JavaPoetMethod(val name : String,
@@ -14,6 +16,13 @@ class JavaPoetMethod(val name : String,
                      val parameters : Set<JavaPoetValue>) {
 
   val methodSpecBuilder : MethodSpec.Builder
+  var annotations : Set<AnnotationSpec>? = null
+    set(value) {
+      field == value
+      value?.forEach {
+        methodSpecBuilder.addAnnotation(it)
+      }
+    }
   var javaDoc : String? = null
     set(value) {
       field == value
