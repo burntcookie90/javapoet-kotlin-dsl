@@ -1,11 +1,11 @@
-package com.vishnurajeevan.javapoet.dsl.model
+package io.dwak.javapoet.dsl.model
 
 import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeVariableName
-import com.vishnurajeevan.javapoet.dsl.model.JavaPoetConstructor
-import com.vishnurajeevan.javapoet.dsl.model.JavaPoetMethod
-import com.vishnurajeevan.javapoet.dsl.model.JavaPoetValue
+import io.dwak.javapoet.dsl.model.JavaPoetConstructor
+import io.dwak.javapoet.dsl.model.JavaPoetMethod
+import io.dwak.javapoet.dsl.model.JavaPoetValue
 import java.lang.reflect.Type
 import javax.lang.model.element.Modifier
 
@@ -51,7 +51,7 @@ class JavaPoetType(val modifiers : Set<Modifier>,
             value : Any? = null,
             init : JavaPoetValue.() -> Unit = {}) : JavaPoetValue {
 
-    val jPValue = JavaPoetValue(modifiers = modifiers, type= type, name = name, value = value)
+    val jPValue = JavaPoetValue(modifiers = modifiers, type = type, name = name, value = value)
     jPValue.init()
     fields.add(jPValue)
     return jPValue

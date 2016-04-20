@@ -1,4 +1,4 @@
-package com.vishnurajeevan.javapoet.dsl.model
+package io.dwak.javapoet.dsl.model
 
 import com.squareup.javapoet.TypeName
 import java.lang.reflect.Type

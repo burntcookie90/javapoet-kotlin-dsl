@@ -1,4 +1,4 @@
-package com.vishnurajeevan.javapoet.dsl
+package io.dwak.javapoet.dsl
 
 import com.squareup.javapoet.ClassName
 
